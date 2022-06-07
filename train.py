@@ -1,7 +1,13 @@
+import tensorflow as tf
 import glob
 import os
 import json
 from keras.callbacks import ModelCheckpoint
+from config import image_path,caption_path,model_weights
+from preprocessing import image_loading,text_loading
+import tensorflow.keras import layers
+from models import base_model
+
 #loading the captions and the images paths
 test_size=.1
 images_list=sorted(glob.glob(os.path.join(image_path,'*.jpg')))
