@@ -1,9 +1,9 @@
 #Here we will store all the Path and Important things  files
 
 #Image path
-image_path='myntradataset/images'
+image_path='myntradataset/images/'
 #Caption path
-caption_path='myntradataset/captions'
+caption_path='myntradataset/captions/'
 
 #Image_size=
 Image_size=(150,150,3)
