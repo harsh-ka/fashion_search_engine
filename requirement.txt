@@ -1,0 +1,8 @@
+tensorflow
+numpy
+pickle
+json
+sklearn
+ast
+pandas
+matplotlib

@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from models import text_model
 from preprocessing import image_loading
 import argparse
-
+from tensorflow import keras
 parser=argparse.ArgumentParser()
 parser.add_argument('-w','--word',type='string',help='Enter the word you want to search image for', \
                     required=True
@@ -26,7 +26,7 @@ t_model.load_weights(model_weights,by_name=True)
 
 data=pd.read_csv(img_repr,header=None,names=['image_list','captions','image_embedding','text_embedding'],\
                  converters={'image_embedding':literal_eval})
-nn=pickle.load(open(nearest_neigbour,'r+'))
+nn=pickle.load(open(nearest_neigbour,'rb'))
 
 def seach_by_word(word, t_model, nearest_neigbour, vectorizer, file_name=None):
     # i_model should be an instance of Model

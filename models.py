@@ -1,3 +1,7 @@
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+
 def base_model(vec_dims=20, vocab_size=100000, embedding_matrix=None):
     # checking if embedding_matrix is of correct shape or not if provided
 

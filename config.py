@@ -11,16 +11,16 @@ Image_size=(150,150,3)
 #Latent vector dimension for triplet loss
 vector_dims=20
 #Provide the model weights path
-model_weights='final_trained.h5'
+model_weights='files/final_trained.h5'
 
 #Provide the image repr path
 
-img_repr='representation_images.csv'
+img_repr='files/representation_images.csv'
 
 #Provide the mapping json file path
 
-vocab_mapping='mapping.json'
+vocab_mapping='files/mapping.json'
 
 #nearest neigbour pickle file
 
-nearest_neigbour='nn.pkl'
+nearest_neigbour='files/nn_model.pkl'

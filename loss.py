@@ -1,3 +1,4 @@
+import tensorflow.keras.backend as K
 def triplet_loss(y_true, y_pred, margin=1.0):
     '''This is Special type of Loss function Using for this Image retrival
     In This loss function we train our model on One Ancor ,One Positive Label ,One Negative Label
