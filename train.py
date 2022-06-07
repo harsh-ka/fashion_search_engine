@@ -3,7 +3,7 @@ import glob
 import os
 import json
 from keras.callbacks import ModelCheckpoint
-from config import image_path,caption_path,model_weights
+from config import image_path,caption_path,model_weights,vocab_mapping,vector_dims
 from preprocessing import image_loading,text_loading
 import tensorflow.keras import layers
 from models import base_model
@@ -46,7 +46,7 @@ test_data=tf.data.Dataset.zip((test_images,test_postive_caption,test_negative_ca
 
 # Text vectorizer layer it adapt on a vocbulary and convert input sentences in number encoded vector
 # Ex "This is me"---------->[1,11,5] it will look like this
-if not os.path.isfile('mapping.json'):
+if not os.path.isfile(vocab_mapping):
 
     vectorizer = layers.TextVectorization(max_tokens=100000, output_sequence_length=10, output_mode='int')
 
@@ -57,7 +57,7 @@ if not os.path.isfile('mapping.json'):
     json.dump(vectorizer.get_vocabulary(), open('mapping.json', 'w+'))
 else:
 
-    mapping = json.load(open('mapping.json', 'r+'))
+    mapping = json.load(open(vocab_mapping, 'r+'))
     # Intilaizing the vector layer for text processing for the embedding layer
 
     vectorizer = layers.TextVectorization(max_tokens=100000, output_mode='int', output_sequence_length=10)
