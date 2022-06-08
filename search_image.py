@@ -10,6 +10,7 @@ from preprocessing import image_loading
 import argparse
 import tensorflow as tf
 import os
+from uuid import uuid4
 
 parser=argparse.ArgumentParser()
 parser.add_argument('-i','--image_path',type=str,help='Enter the image_path you want to search image for', \
@@ -29,7 +30,7 @@ data=pd.read_csv(img_repr,header=None,names=['image_list','captions','image_embe
                  converters={'image_embedding':literal_eval})
 nn=pickle.load(open(nearest_neigbour,'rb'))
 
-def search_by_image(image_path, i_model, nearest_neigbour, file_name=None):
+def search_by_image(image_path, i_model, nearest_neigbour, save_image=False):
     assert isinstance(nearest_neigbour, sklearn.neighbors.NearestNeighbors)
     # query Image shape should be equal to that of i_model.input
 
@@ -55,13 +56,13 @@ def search_by_image(image_path, i_model, nearest_neigbour, file_name=None):
             plt.title('Query Image')
         else:
             plt.imshow(image_loading(similar_image_path[i][1:], False, [300, 300]))
-            plt.title('Similary image %s' % (i))
+            plt.title('Result image %s' % (i))
         plt.xticks([])
         plt.yticks([])
         plt.axis('off')
-    if file_name is not None:
-        plt.savefig(str(file_name), dpi=200)
+    if save_image :
+        plt.savefig("Image_Search%s.jpg"%str(uuid4())[:4], dpi=200)
     plt.show()
 
 
-search_by_image(str(image_path),i_model,nn,)
+search_by_image(str(image_path),i_model,nn,True)
